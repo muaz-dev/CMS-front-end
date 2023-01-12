@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Tiny from "../components/tiny/display";
 import Quill from "../components/quill/display";
 import Ckeditor from "../components/ckeditor/display";
@@ -9,9 +9,12 @@ function Home() {
   const userInfo = localStorage.getItem("user");
   const user = JSON.parse(userInfo);
 
-  if (!userInfo) {
-    navigate("/sign-in");
-  }
+  useEffect(() => {
+    if (!userInfo) {
+      navigate("/sign-in");
+    }
+  }, []);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const navigation = ["Tiny", "Quill"];
 
@@ -27,7 +30,7 @@ function Home() {
           Sign out
         </button>
 
-        <span className="ms-2"> Sing in Email : {user.email}</span>
+        <span className="ms-2"> Sing in Email : {user ? user.email : ""}</span>
       </div>
 
       <div className="w-75 mx-auto">
