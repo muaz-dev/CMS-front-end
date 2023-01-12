@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./tiny.css";
 import { useNavigate } from "react-router-dom";
+import url from "../../url";
 
 function Display() {
   const [data, setData] = useState("");
@@ -10,16 +11,14 @@ function Display() {
 
   useEffect(() => {
     const fetchData = async () => {
-      let response = await axios.get(
-        "http://localhost:8080/api/tiny/get-blogs"
-      );
+      let response = await axios.get(`${url}/api/tiny/get-blogs`);
       setData(response.data);
       console.log(response.data);
     };
     fetchData();
   }, [refresh]);
   const deleteContent = async (id) => {
-    await axios.delete(`http://localhost:8080/api/tiny/delete/${id}`);
+    await axios.delete(`${url}/api/tiny/delete/${id}`);
     setrefresh(!refresh);
   };
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import url from "../../url";
 
 function TinyUpdate() {
   let { id } = useParams();
@@ -14,9 +15,7 @@ function TinyUpdate() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        `http://localhost:8080/api/tiny/get/${id}`
-      );
+      const response = await axios.get(`${url}/api/tiny/get/${id}`);
       setData(response.data);
     };
     fetchData();
@@ -26,7 +25,7 @@ function TinyUpdate() {
     const data = {
       content: editorRef.current.getContent(),
     };
-    await axios.put(`http://localhost:8080/api/tiny/update/${id}`, data);
+    await axios.put(`${url}/api/tiny/update/${id}`, data);
     navigate("/");
   };
 

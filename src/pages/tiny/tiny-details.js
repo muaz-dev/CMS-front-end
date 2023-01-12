@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import url from "../../url";
 
 function TinyDetails() {
   let { id } = useParams();
   const [data, setData] = useState("");
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        `http://localhost:8080/api/tiny/get/${id}`
-      );
+      const response = await axios.get(`${url}/api/tiny/get/${id}`);
       setData(response.data);
     };
     fetchData();

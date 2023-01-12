@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
+import url from "../../url";
 
 function QuillDetails() {
   let { id } = useParams();
@@ -11,9 +12,7 @@ function QuillDetails() {
   console.log(data);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        `http://localhost:8080/api/quill/get/${id}`
-      );
+      const response = await axios.get(`${url}/api/quill/get/${id}`);
       setData(response.data);
     };
     fetchData();

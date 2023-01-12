@@ -4,6 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import url from "../../url";
 
 const modules = {
   toolbar: [
@@ -40,7 +41,7 @@ export default function Home() {
       createBy: user.name,
       creatorEmail: user.email,
     };
-    await axios.post("http://localhost:8080/api/quill/add-content", data);
+    await axios.post(`${url}/api/quill/add-content`, data);
     navigate("/");
   };
 

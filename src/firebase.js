@@ -3,15 +3,6 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "@firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyDlRVejVieFyzm2nyoeDRJrExRwHT1uXLM",
-//   authDomain: "bowon-4bd77.firebaseapp.com",
-//   projectId: "bowon-4bd77",
-//   storageBucket: "bowon-4bd77.appspot.com",
-//   messagingSenderId: "484797915063",
-//   appId: "1:484797915063:web:90b059f0362028f7b21232",
-// };
-
 const firebaseConfig = {
   apiKey: "AIzaSyAuhb38yffR25t_JNAYiYLYGowrpNFx-LA",
   authDomain: "editor-183ed.firebaseapp.com",

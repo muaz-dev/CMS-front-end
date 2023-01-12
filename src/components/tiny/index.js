@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import url from "../../url";
 
 export default function App() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export default function App() {
       creatorEmail: user.email,
     };
     console.log(data);
-    await axios.post("http://localhost:8080/api/tiny/add-content", data);
+    await axios.post(`${url}/api/tiny/add-content`, data);
     navigate("/");
   };
   return (

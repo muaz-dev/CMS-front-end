@@ -4,6 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import url from "../../url";
 
 const modules = {
   toolbar: [
@@ -37,9 +38,7 @@ function QuillUpdate() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        `http://localhost:8080/api/quill/get/${id}`
-      );
+      const response = await axios.get(`${url}/api/quill/get/${id}`);
       setData(response.data);
       setContent(response.data.content);
     };
@@ -50,7 +49,7 @@ function QuillUpdate() {
     const data = {
       content,
     };
-    await axios.put(`http://localhost:8080/api/quill/update/${id}`, data);
+    await axios.put(`${url}/api/quill/update/${id}`, data);
     navigate("/");
   };
 

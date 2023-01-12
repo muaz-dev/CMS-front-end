@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
+import url from "../../url";
 
 function Display() {
   const [data, setData] = useState("");
@@ -12,15 +13,13 @@ function Display() {
 
   useEffect(() => {
     const fetchData = async () => {
-      let response = await axios.get(
-        "http://localhost:8080/api/quill/get-contents"
-      );
+      let response = await axios.get(`${url}/api/quill/get-contents`);
       setData(response.data);
     };
     fetchData();
   }, [refresh]);
   const deleteContent = async (id) => {
-    await axios.delete(`http://localhost:8080/api/quill/delete/${id}`);
+    await axios.delete(`${url}/api/quill/delete/${id}`);
     setrefresh(!refresh);
   };
 
